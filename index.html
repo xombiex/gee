@@ -24,31 +24,31 @@
           <img src="https://media.discordapp.net/attachments/1142938791770853538/1144411573021069312/swat-icon-3.png"/>
             </pre>
 
-
-  <style>
+<style>
     /* Style for paragraphs */
     p {
       color: white;
       transition: color 0.3s ease; /* Smooth color transition */
     }
-
-    /* Change color on hover */
-    p:hover {
-      color: rgb(
-        /* Generate random RGB values */
-        Math.floor(Math.random() * 256),
-        Math.floor(Math.random() * 256),
-        Math.floor(Math.random() * 256)
-      );
-    }
   </style>
-	    
-<p id="merc">Merc</p>
-<p id="keygen">Keygen</p>
-<p id="dezi">Dezi</p>
-<p id="discord">Discord</p>
+
+<p id="merc" onmouseover="changeColor('merc')">Merc</p>
+<p id="keygen" onmouseover="changeColor('keygen')">Keygen</p>
+<p id="dezi" onmouseover="changeColor('dezi')">Dezi</p>
+<p id="discord" onmouseover="changeColor('discord')">Discord</p>
 
 <script>
+  // Change color on hover
+  function changeColor(id) {
+    var paragraph = document.getElementById(id);
+    var randomColor = 'rgb(' +
+      Math.floor(Math.random() * 256) + ',' +
+      Math.floor(Math.random() * 256) + ',' +
+      Math.floor(Math.random() * 256) +
+      ')';
+    paragraph.style.color = randomColor;
+  }
+	
   // Add click event listeners to the paragraphs
   document.getElementById("merc").addEventListener("click", function() {
     window.location.href = "./merc.html";
