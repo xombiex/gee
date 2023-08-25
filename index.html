@@ -19,6 +19,19 @@
 </head>
 <body>
 
+
+
+  <script>
+    // Detect Ctrl + Shift + I or Ctrl + Shift + C
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'C')) {
+        e.preventDefault();
+        window.location.href = 'https://media.tenor.com/yKNWg88Y1W4AAAAC/eric-andre-let-me.gif';
+      }
+    });
+  </script>
+
+	
 <script>
   window.addEventListener('keydown', function (e) {
     if (e.keyCode === 123) { // F12 key
