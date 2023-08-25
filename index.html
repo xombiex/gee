@@ -32,25 +32,35 @@
     }
   </style>
 
-<p id="merc" onmouseover="changeColor('merc')">Merc</p>
-<p id="keygen" onmouseover="changeColor('keygen')">Keygen</p>
-<p id="dezi" onmouseover="changeColor('dezi')">Dezi</p>
-<p id="discord" onmouseover="changeColor('discord')">Discord</p>
+<p id="merc" onmouseover="startChangingColor('merc')" onmouseout="stopChangingColor('merc')">Merc</p>
+<p id="keygen" onmouseover="startChangingColor('keygen')" onmouseout="stopChangingColor('keygen')">Keygen</p>
+<p id="dezi" onmouseover="startChangingColor('dezi')" onmouseout="stopChangingColor('dezi')">Dezi</p>
+<p id="discord" onmouseover="startChangingColor('discord')" onmouseout="stopChangingColor('discord')">Discord</p>
 
 <script>
-  // Change color on hover
-  function changeColor(id) {
-    var paragraph = document.getElementById(id);
-    var randomColor = 'rgb(' +
-      Math.floor(Math.random() * 256) + ',' +
-      Math.floor(Math.random() * 256) + ',' +
-      Math.floor(Math.random() * 256) +
-      ')';
-      paragraph.style.color = randomColor;
-    }, 50); // Change color every 200ms
-  
+  // Interval variable to keep track of color changing
+  var intervalIds = {};
 
-	
+  // Start changing color on hover
+  function startChangingColor(id) {
+    var paragraph = document.getElementById(id);
+    intervalIds[id] = setInterval(function() {
+      var randomColor = 'rgb(' +
+        Math.floor(Math.random() * 256) + ',' +
+        Math.floor(Math.random() * 256) + ',' +
+        Math.floor(Math.random() * 256) +
+        ')';
+      paragraph.style.color = randomColor;
+    }, 200); // Change color every 200ms
+  }
+
+  // Stop changing color when mouse moves off
+  function stopChangingColor(id) {
+    clearInterval(intervalIds[id]);
+    var paragraph = document.getElementById(id);
+    paragraph.style.color = "white"; // Revert to original color
+  }
+
   // Add click event listeners to the paragraphs
   document.getElementById("merc").addEventListener("click", function() {
     window.location.href = "./merc.html";
