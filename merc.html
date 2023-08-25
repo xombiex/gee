@@ -204,6 +204,20 @@
     };
 
 </script>
+
+<script>
+  function videoPlay() {
+      var video = document.getElementById("video");
+			video.volume = 0.05;
+			video.play();
+  }
+
+	function audioPlay() {
+			var audio = document.getElementById("audio");
+			audio.volume = 0.55;
+			audio.play();
+	}
+</script>
 <script src="merc_files/app.js" type="text/javascript"></script>
 <style type="text/css">.typewrite > .wrap {
     border-right: 0.08em solid #fff
