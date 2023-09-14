@@ -1,0 +1,41 @@
+<style> 
+        
+#loaderip {margin:10px;padding:20px; background:yellow; font-size:30px; } 
+        
+table.custom, table.custom2{width:100%;font-family:helvetica;border-spacing: 0;border: 0px solid #bbb;}table.custom,table.custom th,table.custom td, table.custom2 th, table.custom2 td{border:1px solid #ddd;border-collapse:collapse}table.custom td, table.custom2 td{padding:15px; min-width:100px;}th{padding:7px 10px;text-align:left;font-family:oswald;font-weight:400; font-size:16px;}table.custom tr:nth-child(odd), table.custom2 tr:nth-child(odd){background-color:#f1f1f1}table.custom tr:nth-child(even), table.custom2 tr:nth-child(even){background-color:#fff}table.custom th{background-color:#333;color:#fff;border:1px solid #333}table.custom th:nth-child(even){background-color:#555} 
+        
+table.custom2 th{background-color:#7dc733;color:#fff;border:1px solid #6fc415}table.custom2 th:nth-child(even){background-color:rgba(111, 196, 21, 0.75)} 
+        
+table.custom2 td:nth-child(odd){font-family: oswald;width: 43%;} 
+        
+table.custom2 th:hover {background-color: #6fc415;}</style>
+     
+<div id="loaderip">Loading your location details, please wait.........</div> 
+        
+<div id="demo"></div>  
+
+<script> 
+       
+//Show IP address my mybloggertricks.com 
+        
+var hideloader = document.getElementById("loaderip"); 
+        
+var xmlhttp = new XMLHttpRequest(); 
+        
+xmlhttp.onreadystatechange = function() { 
+        
+    if (this.readyState == 4 && this.status == 200) { 
+
+        var myip = JSON.parse(this.responseText); 
+
+        document.getElementById("demo").innerHTML = '<table class="custom" border="0" cellspacing="0" cellpadding="0" width="590"><tbody><tr><td colspan="2"><p align="center"><font size="3"><b>Your IP Address is ➔</b> </font><strong><font color="#008000" size="5">'+myip.ip+'</font></strong></p></td></tr><tr><td valign="top" width="295">Your Public IP</td><td valign="top" width="295">'+myip.ip+'</td></tr><tr><td valign="top" width="295">Country Code</td><td valign="top" width="295">'+myip.country_code+'</td></tr> <tr> <td valign="top" width="295">Country</td> <td valign="top" width="295">'+myip.country_name+'</td> </tr> <tr> <td valign="top" width="295">Region</td> <td valign="top" width="295">'+myip.region_name+'</td> </tr> <tr> <td valign="top" width="295"> City </td> <td valign="top" width="295">'+myip.city+'</td> </tr> <tr> <td valign="top" width="295">Region Code</td> <td valign="top" width="295">'+myip.region_code+'</td> </tr> <tr> <td valign="top" width="295">Zip Code</td> <td valign="top" width="295">'+myip.zip_code+'</td> </tr> <tr> <td valign="top" width="295">Time Zone </td> <td valign="top" width="295">'+myip.time_zone+'</td> </tr> <tr> <td valign="top" width="295">Latitude</td> <td valign="top" width="295">'+myip.latitude+'</td> </tr> <tr> <td valign="top" width="295">Longitude</td> <td valign="top" width="295">'+myip.longitude+'</td> </tr>  </tbody></table>';      
+
+        hideloader.style.display='none';     } 
+ 
+}; 
+     
+xmlhttp.open("GET", "https://freegeoip.net/json/", true); 
+      
+xmlhttp.send();   
+
+</script>         
