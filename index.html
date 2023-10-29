@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+<title>Home | Swatted</title>
+<link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/5827/5827642.png">
+<link rel="shortcut icon" type="image/png" href="favicon.webp">
+<meta content="Home" property="og:title">
+<meta name="og:description" content="Im so kawaii!!~">
+<meta name="og:image" content="https://cdn.discordapp.com/attachments/1087755535790657628/1094692627011604521/IMG_9187.jpg?size=80">
+<meta property="og:type" content="website
+<meta name="theme-color" content="#00000">
+<meta image="https://media.discordapp.net/attachments/1142938791770853538/1144411573021069312/swat-icon-3.png">
+<link rel="stylesheet" href="css/css-main.css">
+<link rel="stylesheet" href="css/css-style.css">
+<link rel="stylesheet" href="css/css-ff.css">
+<link rel="stylesheet" href="css/css-animation.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<main class="scanlines">
+	<div class="screen">
+		<canvas id="canvas" class="picture"></canvas>
+		<div class="overlay">
+			<div class="text">
+				<span>ME-1</span>
+			</div>
+			<div class="menu">
+				<header>
+					Main Menu
+				</header>
+				<ul>
+					<li class="active"><a href="/keygen.html" title="">Keygen</a></li>
+					<li><a href="/merc.html" title="">Merc</a></li>
+					<li><a href="/dezi.html" title="">Dezi</a></li>
+					<li><a href="https://discord.gg/views" title="">Discord</a></li>
+				</ul>
+				<footer>
+					<div class="key">Exit: <span>1</span></div>
+					<div class="key">Select: <span>2</span></div>
+				</footer>
+			</div>
+		</div>
+	</div>
+</main>
+
+  <script  src="./script.js"></script>
+
+
+
+  <script>
+	//Created by Title bar Maker (http://bosiljak.hr/titlemaker)
+						  function tb8_makeArray(n){
+						  this.length = n;
+						  return this.length;
+						  }
+						  tb8_messages = new tb8_makeArray(3);
+						  tb8_messages[0] = "swatted.me | BioLinks";
+						  tb8_messages[2] = "/swatted";
+						  tb8_messages[2] = "/swatted on top";
+						  tb8_rptType = 'infinite';
+						  tb8_rptNbr = 5;
+						  tb8_speed = 150;
+						  tb8_delay =1500;
+						  var tb8_counter=1;
+						  var tb8_currMsg=0;
+						  var tb8_tekst ="";
+						  var tb8_i=0;
+						  var tb8_TID = null;
+						  function tb8_pisi(){
+						  tb8_tekst = tb8_tekst + tb8_messages[tb8_currMsg].substring(tb8_i, tb8_i+1);
+						  document.title = tb8_tekst;
+						  tb8_sp=tb8_speed;
+						  tb8_i++;
+						  if (tb8_i==tb8_messages[tb8_currMsg].length){
+						  tb8_currMsg++; tb8_i=0; tb8_tekst="";tb8_sp=tb8_delay;
+						  }
+						  if (tb8_currMsg == tb8_messages.length){
+						  if ((tb8_rptType == 'finite') && (tb8_counter==tb8_rptNbr)){
+						  clearTimeout(tb8_TID);
+						  return;
+						  }
+						  tb8_counter++;
+						  tb8_currMsg = 0;
+						  }
+						  tb8_TID = setTimeout("tb8_pisi()", tb8_sp);
+						  }
+						  tb8_pisi()
+						  
+  </script>
+
+
+</body>
+</html>
