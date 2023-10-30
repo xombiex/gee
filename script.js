@@ -10,11 +10,11 @@ var main = document.querySelector("main"),
 	toggle = true,
 	frame;
 
-// Set canvas size
+
 canvas.width = ww / 3;
 canvas.height = (ww * 0.5625) / 3;
 
-// Generate CRT noise
+
 function snow() {
 	var w = ctx.canvas.width,
 		h = ctx.canvas.height,
@@ -34,7 +34,7 @@ function animate() {
 	frame = requestAnimationFrame(animate);
 }
 
-// Glitch
+
 for (i = 0; i < 4; i++) {
 	var span = text.firstElementChild.cloneNode(true);
 	text.appendChild(span);
@@ -75,12 +75,12 @@ window.addEventListener("keydown", function (e) {
 
         ul.children[prev].classList.remove("active");
         ul.children[idx].classList.add("active");
-	} else if (key == 50) { // '2' key
+	} else if (key == 50) {
         var activeLink = ul.children[idx].querySelector('a');
         if (activeLink) {
             window.location.href = activeLink.href;
         }
-    } else if (key == 49) { // '1' key
+    } else if (key == 49) {
         window.location.href = 'exited.html';
     }
 }, false);
